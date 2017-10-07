@@ -32,18 +32,19 @@ import { MultiParam, ParamType } from "routing-controllers-multiparam";
 
 // declare the controller class using routing-controller decorators
 @JsonController()
-class SampleController {
-    @Post("/sample")
-    multipleObjects(
+class ProductsController {
+    // for example, register action on two routes
+    // and get `categoryId` param from query or path
+    // so both routes will work
+    @Get("/products")
+    @Get("/categories/:categoryId/products")
+    getProductsByCategory(
         // use the `@MultiParam` decorator to define the sources of the param to inject
-        @MultiParam({ allow: {
-            [ParamType.QueryParam]: "roleQuery",
-            [ParamType.BodyParam]: "roleBody",
-        }})
-        role: string,
+        @MultiParam("categoryId", { required: true, allow: [ParamType.QueryParam, ParamType.Param] })
+        categoryId: number,
     ) {
         return {
-            role,
+            categoryId,
         };
     }
 }
@@ -78,11 +79,11 @@ export function MultiParam(paramName: string, options: UnamedParamOptions): Para
     };
 };
 ```
-So the usage is just like in the example:
+So the usage is just like this:
 ```ts
 @MultiParam({ allow: {
-    [ParamType.QueryParam]: ["role", "roleFromQuery"],
-    [ParamType.BodyParam]: "roleFromBody",
+    [ParamType.QueryParam]: ["api_key", "apiKey"],
+    [ParamType.HeaderParam]: "X-Auth-Api-Key",
 }})
 ```
 - `UnamedParamOptions` - a type of object that property `allow` can be `ParamType` or array of `ParamType`
