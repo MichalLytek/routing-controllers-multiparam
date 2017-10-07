@@ -1,0 +1,8 @@
+# node modules
+node_modules
+
+# build
+build
+
+# compiled package
+package

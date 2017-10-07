@@ -1,0 +1,54 @@
+{
+  "name": "routing-controllers-multiparam",
+  "version": "0.1.0",
+  "description": "A simple plugin for routing-controller which allows to inject param from multiple sources.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register src/**/*.spec.ts --exit",
+    "list": "tslint --project tsconfig.json"
+  },
+  "keywords": [
+    "routing-controllers",
+    "routing controllers",
+    "routing-controllers-extenstions",
+    "routing controllers extenstions",
+    "typescript",
+    "express"
+  ],
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "author": {
+    "name": "Michał Lytek",
+    "email": "michal.ly@wp.pl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/19majkel94/routing-controllers-multiparam.git"
+  },
+  "bugs": {
+    "url": "https://github.com/19majkel94/routing-controllers-multiparam/issues"
+  },
+  "peerDependencies": {
+    "routing-controllers": "^0.7.4"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.5",
+    "@types/chai": "^4.0.4",
+    "@types/chai-http": "^3.0.3",
+    "@types/express": "^4.0.37",
+    "@types/mocha": "^2.2.43",
+    "@types/node": "^8.0.33",
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "express": "^4.16.1",
+    "mocha": "^4.0.1",
+    "reflect-metadata": "^0.1.10",
+    "routing-controllers": "^0.7.4",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3"
+  },
+  "dependencies": {},
+  "private": true
+}
