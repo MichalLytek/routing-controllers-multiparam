@@ -4,6 +4,7 @@
   "description": "A simple plugin for routing-controller which allows to inject param from multiple sources.",
   "main": "index.js",
   "scripts": {
+    "build": "rimraf /build && tsc",
     "test": "mocha -r ts-node/register src/**/*.spec.ts --exit",
     "list": "tslint --project tsconfig.json"
   },
@@ -44,6 +45,7 @@
     "express": "^4.16.1",
     "mocha": "^4.0.1",
     "reflect-metadata": "^0.1.10",
+    "rimraf": "^2.6.2",
     "routing-controllers": "^0.7.4",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",

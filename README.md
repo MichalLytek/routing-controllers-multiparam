@@ -71,7 +71,7 @@ export function MultiParam(paramName: string, options: UnamedParamOptions): Para
 
 - `NamedParamOptions` - a type of object that property `allow` can be a dictionary of allowed types:
 ```ts
-export type MultiParamDecoratorNamedOptions = {
+{
     required?: boolean;
     allow: { 
         [P in ParamType]?: string | string[];
@@ -87,7 +87,7 @@ So the usage is just like in the example:
 ```
 - `UnamedParamOptions` - a type of object that property `allow` can be `ParamType` or array of `ParamType`
 ```ts
-export type MultiParamDecoratorUnnamedOptions = {
+{
     required?: boolean;
     allow: ParamType | ParamType[];
 };
@@ -99,7 +99,7 @@ It can be used only with `paramName` parameter when you want to get the param fr
 
 ## More info
 
-If you need more examples of usage, go to the sources and check unit tests file - `/src/decorators/MultiParam.ts`. If you have questions or new features/ideas, feel free to open an issue on GitHub repository.
+If you need more examples of usage, go to the sources and check unit tests file - `/src/decorators/MultiParam.spec.ts`. If you have questions or new features/ideas, feel free to open an issue on GitHub repository.
 
 ## Release notes
 
