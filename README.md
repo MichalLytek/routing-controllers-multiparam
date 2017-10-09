@@ -5,7 +5,7 @@
 [![devDependency Status](https://david-dm.org/19majkel94/routing-controllers-multiparam/dev-status.svg)](https://david-dm.org/19majkel94/routing-controllers-multiparam#info=devDependencies)
 [![peerDependency Status](https://david-dm.org/19majkel94/routing-controllers-multiparam/peer-status.svg)](https://david-dm.org/19majkel94/routing-controllers-multiparam#info=devDependencies)
 
-A simple plugin for [routing-controller](https://github.com/pleerock/routing-controller) which allows to inject param from multiple sources.
+A simple plugin for [routing-controllers](https://github.com/pleerock/routing-controllers) which allows to inject param from multiple sources.
 
 ## Installation
 
