@@ -19,7 +19,7 @@ A simple plugin for [routing-controllers](https://github.com/pleerock/routing-co
 
 #### Peer dependencies
 
-This package is only a simple plugin, so you have to install the `routing-controllers` package because it can't work without them.
+This package is only a plugin, so you have to install the `routing-controllers` package because it can't work without it.
 
 ## Usage
 
@@ -30,18 +30,17 @@ import { JsonController, Post, createExpressServer } from "routing-controllers";
 // import the `@MultiParam` decorator and `ParamType` enum from the module
 import { MultiParam, ParamType } from "routing-controllers-multiparam";
 
-// declare the controller class using routing-controller decorators
+// declare the controller class using routing-controllers decorators
 @JsonController()
 class ProductsController {
-    // for example, register action on two routes
-    // and get `categoryId` param from query or path
-    // so both routes will work
+    // example use case:
+    // register action on two routes and get `categoryId` param from query or path so both routes will work
     @Get("/products")
     @Get("/categories/:categoryId/products")
     getProductsByCategory(
         // use the `@MultiParam` decorator to define the sources of the param to inject
         @MultiParam("categoryId", { required: true, allow: [ParamType.QueryParam, ParamType.Param] })
-        categoryId: number,
+        categoryId: string,
     ) {
         return {
             categoryId,
@@ -50,16 +49,17 @@ class ProductsController {
 }
 
 // start the server
-createExpressServer({ controllers: [SampleController]}).listen(3000);
+createExpressServer({ controllers: [SampleController] }).listen(3000);
 
 ```
-And that's it! This will lead to inject the first non-undefined value from the list of sources, so when you specify `roleBody` param in body but not `roleQuery` inside path (query string) it will be injected. It works just like switch-case!
+And that's it! This will lead to inject the first non-undefined value from the list of sources, so when you specify `categoryId` param in path but not as a query string, it will be injected. It works just like switch-case - finds first source that exist.
 
 ## API reference
 
 #### Function signatures
 
 The `@MultiParam` decorator has two overloads:
+
 ```ts
 export function MultiParam(options: NamedParamOptions): ParameterDecorator;
 ```
@@ -86,6 +86,7 @@ So the usage is just like this:
     [ParamType.HeaderParam]: "X-Auth-Api-Key",
 }})
 ```
+
 - `UnamedParamOptions` - a type of object that property `allow` can be `ParamType` or array of `ParamType`
 ```ts
 {
@@ -95,12 +96,18 @@ So the usage is just like this:
 ```
 It can be used only with `paramName` parameter when you want to get the param from multiple source but which is avaible on the same name:
 ```ts
-@MultiParam("api", { allow: [ParamType.QueryParam, ParamType.HeaderParam] })
+@MultiParam("apiKey", { allow: [ParamType.QueryParam, ParamType.HeaderParam] })
 ```
+
+## Known limitation/issues
+
+* param normalization doesn't work - number params aren't casted from string (TBD after routing-controller `0.8.x` release)
+* there's no validation and transforming options (only primitives are supported)
 
 ## More info
 
-If you need more examples of usage, go to the sources and check unit tests file - `/src/decorators/MultiParam.spec.ts`. If you have questions or new features/ideas, feel free to open an issue on GitHub repository.
+If you need more examples of usage, go to the sources and check unit tests file (`/src/decorators/MultiParam.spec.ts`).
+If you have questions or new features/ideas, feel free to open an issue on GitHub repository.
 
 ## Release notes
 
